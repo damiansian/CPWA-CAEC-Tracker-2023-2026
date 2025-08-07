@@ -258,6 +258,64 @@
             border: 0;
         }
 
+        /* Submission tracking */
+        .submission-tracking {
+            margin-top: 20px;
+        }
+
+        .submission-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: #007bff;
+        }
+
+        .date-input {
+            margin-top: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .date-input label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .date-input input[type="date"] {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .date-input input[type="date"]:focus {
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+            border-color: #007bff;
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .container {
@@ -370,6 +428,36 @@
             </table>
         </section>
 
+        <!-- IAAP Submission Tracking -->
+        <section class="progress-summary">
+            <h2>IAAP Submission Status</h2>
+            <div class="submission-tracking">
+                <div class="submission-item">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="submitted-checkbox" onchange="toggleSubmissionDate()">
+                        <span class="checkmark"></span>
+                        Submitted to IAAP
+                    </label>
+                    <div id="submission-date" class="date-input" style="display: none;">
+                        <label for="submission-date-input">Submission Date:</label>
+                        <input type="date" id="submission-date-input" onchange="updateSubmissionDate()">
+                    </div>
+                </div>
+                
+                <div class="submission-item">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="accepted-checkbox" onchange="toggleAcceptanceDate()">
+                        <span class="checkmark"></span>
+                        Accepted by IAAP
+                    </label>
+                    <div id="acceptance-date" class="date-input" style="display: none;">
+                        <label for="acceptance-date-input">Acceptance Date:</label>
+                        <input type="date" id="acceptance-date-input" onchange="updateAcceptanceDate()">
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 2023 Activities -->
         <section class="year-section">
             <button class="year-header" onclick="toggleYear('2023')" aria-expanded="false" aria-controls="content-2023">
@@ -434,6 +522,18 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- 2024 Activities -->
+        <section class="year-section">
+            <button class="year-header" onclick="toggleYear('2024')" aria-expanded="false" aria-controls="content-2024">
+                <h2>2024 Activities</h2>
+                <span class="year-summary">0 CAECs earned</span>
+                <span class="sr-only">Click to expand or collapse 2024 activities</span>
+            </button>
+            <div id="content-2024" class="year-content">
+                <p>No activities logged for 2024 yet.</p>
             </div>
         </section>
 
@@ -555,18 +655,6 @@
             </div>
         </section>
 
-        <!-- 2024 Activities -->
-        <section class="year-section">
-            <button class="year-header" onclick="toggleYear('2024')" aria-expanded="false" aria-controls="content-2024">
-                <h2>2024 Activities</h2>
-                <span class="year-summary">0 CAECs earned</span>
-                <span class="sr-only">Click to expand or collapse 2024 activities</span>
-            </button>
-            <div id="content-2024" class="year-content">
-                <p>No activities logged for 2024 yet.</p>
-            </div>
-        </section>
-
         <!-- 2026 Activities -->
         <section class="year-section">
             <button class="year-header" onclick="toggleYear('2026')" aria-expanded="false" aria-controls="content-2026">
@@ -617,6 +705,59 @@
         document.addEventListener('DOMContentLoaded', function() {
             toggleYear('2023');
         });
+
+        // Submission tracking functions
+        function toggleSubmissionDate() {
+            const checkbox = document.getElementById('submitted-checkbox');
+            const dateDiv = document.getElementById('submission-date');
+            const dateInput = document.getElementById('submission-date-input');
+            
+            if (checkbox.checked) {
+                dateDiv.style.display = 'block';
+                dateInput.focus();
+                // Set default date to today
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.value = today;
+            } else {
+                dateDiv.style.display = 'none';
+                dateInput.value = '';
+            }
+        }
+
+        function toggleAcceptanceDate() {
+            const checkbox = document.getElementById('accepted-checkbox');
+            const dateDiv = document.getElementById('acceptance-date');
+            const dateInput = document.getElementById('acceptance-date-input');
+            
+            if (checkbox.checked) {
+                dateDiv.style.display = 'block';
+                dateInput.focus();
+                // Set default date to today
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.value = today;
+            } else {
+                dateDiv.style.display = 'none';
+                dateInput.value = '';
+            }
+        }
+
+        function updateSubmissionDate() {
+            const dateInput = document.getElementById('submission-date-input');
+            const date = dateInput.value;
+            if (date) {
+                console.log('Submission date updated:', date);
+                // You can add localStorage or other persistence here
+            }
+        }
+
+        function updateAcceptanceDate() {
+            const dateInput = document.getElementById('acceptance-date-input');
+            const date = dateInput.value;
+            if (date) {
+                console.log('Acceptance date updated:', date);
+                // You can add localStorage or other persistence here
+            }
+        }
     </script>
 </body>
 </html>
