@@ -293,6 +293,11 @@
             background: white;
             border-radius: 5px;
             border: 1px solid #ced4da;
+            transition: all 0.3s ease;
+        }
+
+        .date-input.show {
+            display: block !important;
         }
 
         .date-input label {
@@ -765,15 +770,23 @@
             const dateDiv = document.getElementById(activityId + '-submission-date');
             const dateInput = document.getElementById(activityId + '-submission-date-input');
             
-            if (checkbox.checked) {
+            console.log('toggleSubmissionDate called for:', activityId);
+            console.log('checkbox found:', checkbox);
+            console.log('dateDiv found:', dateDiv);
+            
+            if (checkbox && checkbox.checked) {
                 dateDiv.style.display = 'block';
+                dateDiv.classList.add('show');
                 dateInput.focus();
                 // Set default date to today
                 const today = new Date().toISOString().split('T')[0];
                 dateInput.value = today;
-            } else {
+                console.log('Date input shown for:', activityId);
+            } else if (checkbox) {
                 dateDiv.style.display = 'none';
+                dateDiv.classList.remove('show');
                 dateInput.value = '';
+                console.log('Date input hidden for:', activityId);
             }
         }
 
@@ -782,15 +795,23 @@
             const dateDiv = document.getElementById(activityId + '-acceptance-date');
             const dateInput = document.getElementById(activityId + '-acceptance-date-input');
             
-            if (checkbox.checked) {
+            console.log('toggleAcceptanceDate called for:', activityId);
+            console.log('checkbox found:', checkbox);
+            console.log('dateDiv found:', dateDiv);
+            
+            if (checkbox && checkbox.checked) {
                 dateDiv.style.display = 'block';
+                dateDiv.classList.add('show');
                 dateInput.focus();
                 // Set default date to today
                 const today = new Date().toISOString().split('T')[0];
                 dateInput.value = today;
-            } else {
+                console.log('Acceptance date input shown for:', activityId);
+            } else if (checkbox) {
                 dateDiv.style.display = 'none';
+                dateDiv.classList.remove('show');
                 dateInput.value = '';
+                console.log('Acceptance date input hidden for:', activityId);
             }
         }
 
