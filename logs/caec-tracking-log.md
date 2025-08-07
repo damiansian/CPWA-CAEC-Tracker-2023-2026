@@ -11,19 +11,19 @@
 
 | Year | Earned | Required | Remaining | Status |
 |------|--------|----------|-----------|--------|
-| 2023 | 0 | 10 | 10 | ⏳ Pending |
+| 2023 | 15 | 10 | -5 | ✅ Complete |
 | 2024 | 0 | 10 | 10 | ⏳ Pending |
-| 2025 | 0 | 10 | 10 | ⏳ Pending |
+| 2025 | 6 | 10 | 4 | 🔄 In Progress |
 | 2026 | 0 | 10 | 10 | ⏳ Pending |
-| **Total** | **0** | **40** | **40** | **📊 0/55 Complete** |
+| **Total** | **21** | **40** | **19** | **📊 21/55 Complete** |
 
 ## Detailed CAEC Log
 
 | # | Date | Activity Title | Category | Credits | Provider | Documentation | Status |
 |---|------|----------------|----------|---------|----------|---------------|--------|
-| 1 | | | | | | | ⏳ Pending |
-| 2 | | | | | | | ⏳ Pending |
-| 3 | | | | | | | ⏳ Pending |
+| 1 | 2025-06-03 | A11Y NYC Meetup - AI Bookmarklets | Teaching/Presenting | 2 | A11Y NYC Meetup | [a11y-nyc-civic-hall-2025.md](documentation/sharing-knowledge/presentations/a11y-nyc-civic-hall-2025.md) | ✅ Completed |
+| 2 | 2025-02-26 | axe-con 2025 - Design Annotation | Teaching/Presenting | 4 | Deque Systems | [axe-con-2025-design-annotation.md](documentation/sharing-knowledge/presentations/axe-con-2025-design-annotation.md) | ✅ Completed |
+| 3 | 2023-05-12 | Gallaudet University ASL I | Formal Education | 15 | Gallaudet University | [gallaudet-asl-1-2023.md](documentation/professional-development/transcripts/gallaudet-asl-1-2023.md) | ✅ Completed |
 | 4 | | | | | | | ⏳ Pending |
 | 5 | | | | | | | ⏳ Pending |
 | 6 | | | | | | | ⏳ Pending |
@@ -81,12 +81,12 @@
 
 | Category | Target Credits | Earned | Remaining |
 |----------|----------------|--------|-----------|
-| **Formal Education** | 20 | 0 | 20 |
+| **Formal Education** | 20 | 15 | 5 |
 | **Professional Development** | 15 | 0 | 15 |
 | **Conference/Workshop** | 10 | 0 | 10 |
 | **Self-Study** | 5 | 0 | 5 |
-| **Teaching/Presenting** | 5 | 0 | 5 |
-| **Total** | **55** | **0** | **55** |
+| **Teaching/Presenting** | 5 | 6 | -1 |
+| **Total** | **55** | **21** | **34** |
 
 ## Status Legend
 - ⏳ **Pending** - Not yet completed
