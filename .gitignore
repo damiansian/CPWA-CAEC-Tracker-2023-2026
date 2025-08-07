@@ -1,0 +1,36 @@
+# Personal Documentation - Keep private
+*.pdf
+*.doc
+*.docx
+*.jpg
+*.jpeg
+*.png
+*.gif
+
+# Backup files
+*.bak
+*~
+*.tmp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Log files
+*.log
+
+# Personal notes (if you want to keep some notes private)
+# personal-notes.md
+# private-*.md
