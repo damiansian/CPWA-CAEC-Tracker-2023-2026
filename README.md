@@ -7,7 +7,7 @@ This repository tracks Continuing Accessibility Education Credits (CAECs) for CP
 - **Certification**: CPWA (Certified Professional in Web Accessibility)
 - **Renewal Period**: 2023-2026 (3 years)
 - **Required CAECs**: 55 total
-- **Current Progress**: 15 CAECs earned, 40 remaining
+- **Current Progress**: 21 CAECs earned, 34 remaining (38.2% complete)
 
 ## 🗂️ Repository Structure
 
@@ -35,22 +35,43 @@ Organized storage for all supporting documents:
 
 ## 📊 Current Status
 
-| Category | CAECs Earned | Annual Limits |
-|----------|--------------|---------------|
-| Professional Development | 15 | No overall limit |
-| Sharing Knowledge | 0 | Various limits apply |
-| Structured Volunteering | 0 | 15/year (10 starting 2025) |
-| **TOTAL** | **15/55** | **40 remaining** |
+### Overall Progress
+- **Total Progress**: 21/55 CAECs (38.2% complete)
+- **Remaining**: 34 CAECs needed
+- **Timeline**: 2023-2026 (3 years remaining)
+
+### Category Breakdown
+| Category | CAECs Earned | Target | Progress |
+|----------|--------------|--------|----------|
+| Formal Education | 15 | 20 | 75% complete |
+| Teaching/Presenting | 6 | 5 | ✅ Complete |
+| Professional Development | 0 | 15 | 0% complete |
+| Conference/Workshop | 0 | 10 | 0% complete |
+| Self-Study | 0 | 5 | 0% complete |
+| **TOTAL** | **21/55** | **55** | **38.2% complete** |
+
+### Annual Progress
+| Year | Earned | Required | Status |
+|------|--------|----------|--------|
+| 2023 | 15 | 10 | ✅ Complete |
+| 2024 | 0 | 10 | ⏳ Pending |
+| 2025 | 6 | 10 | 🔄 In Progress |
+| 2026 | 0 | 10 | ⏳ Pending |
 
 
 ## 🔄 Workflow
 
 ### Adding New CAECs:
-1. Update `tracking/caec-log.md` with activity details
-2. Add "TO DO" items for required documentation
-3. Save supporting docs to appropriate folder
+1. Update `logs/caec-tracking-log.md` with activity details
+2. Create detailed activity log in appropriate documentation folder
+3. Add supporting docs to appropriate folder
 4. Update documentation status when complete
 5. Commit changes with descriptive message
+
+### Recent Activities Logged:
+- **A11Y NYC Meetup** (2025): 2 CAECs - AI Bookmarklets presentation
+- **axe-con 2025** (2025): 4 CAECs - Design Annotation presentation  
+- **Gallaudet ASL I** (2023): 15 CAECs - American Sign Language course
 
 ### Using with AI Tools:
 - **Claude.ai**: Share repository files for guidance and updates
@@ -103,12 +124,13 @@ Organized storage for all supporting documents:
 - All activities must relate to CPACC or WAS Content Outlines
 
 **File Locations:**
-- Main tracking: `tracking/caec-log.md`
-- Requirements: `docs/iaap-requirements/*.md`
+- Main tracking: `logs/caec-tracking-log.md`
+- Requirements: `docs/requirements/iaap-caec-requirements.md`
 - Documentation storage: `documentation/[category]/`
+- Activity logs: `documentation/[category]/[activity-name].md`
 
 ---
 
 **Repository URL**: https://github.com/damiansian/CPWA-CAEC-Tracker-2023-2026  
-**Last Updated**: [Update when making changes]  
-**Next Milestone**: Target 30 CAECs by end of 2024
+**Last Updated**: January 2025  
+**Next Milestone**: Target 35 CAECs by end of 2025
