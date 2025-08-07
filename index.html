@@ -762,6 +762,7 @@
         // Initialize first year as expanded
         document.addEventListener('DOMContentLoaded', function() {
             toggleYear('2023');
+            loadSavedSubmissionData();
         });
 
         // Submission tracking functions
@@ -782,11 +783,29 @@
                 const today = new Date().toISOString().split('T')[0];
                 dateInput.value = today;
                 console.log('Date input shown for:', activityId);
+                
+                // Save checkbox state to localStorage
+                const savedData = JSON.parse(localStorage.getItem('caecSubmissionData') || '{}');
+                savedData[activityId] = savedData[activityId] || {};
+                savedData[activityId].submitted = true;
+                savedData[activityId].submissionDate = today;
+                localStorage.setItem('caecSubmissionData', JSON.stringify(savedData));
             } else if (checkbox) {
                 dateDiv.style.display = 'none';
                 dateDiv.classList.remove('show');
                 dateInput.value = '';
                 console.log('Date input hidden for:', activityId);
+                
+                // Remove from localStorage when unchecked
+                const savedData = JSON.parse(localStorage.getItem('caecSubmissionData') || '{}');
+                if (savedData[activityId]) {
+                    delete savedData[activityId].submitted;
+                    delete savedData[activityId].submissionDate;
+                    if (Object.keys(savedData[activityId]).length === 0) {
+                        delete savedData[activityId];
+                    }
+                    localStorage.setItem('caecSubmissionData', JSON.stringify(savedData));
+                }
             }
         }
 
@@ -807,11 +826,29 @@
                 const today = new Date().toISOString().split('T')[0];
                 dateInput.value = today;
                 console.log('Acceptance date input shown for:', activityId);
+                
+                // Save checkbox state to localStorage
+                const savedData = JSON.parse(localStorage.getItem('caecSubmissionData') || '{}');
+                savedData[activityId] = savedData[activityId] || {};
+                savedData[activityId].accepted = true;
+                savedData[activityId].acceptanceDate = today;
+                localStorage.setItem('caecSubmissionData', JSON.stringify(savedData));
             } else if (checkbox) {
                 dateDiv.style.display = 'none';
                 dateDiv.classList.remove('show');
                 dateInput.value = '';
                 console.log('Acceptance date input hidden for:', activityId);
+                
+                // Remove from localStorage when unchecked
+                const savedData = JSON.parse(localStorage.getItem('caecSubmissionData') || '{}');
+                if (savedData[activityId]) {
+                    delete savedData[activityId].accepted;
+                    delete savedData[activityId].acceptanceDate;
+                    if (Object.keys(savedData[activityId]).length === 0) {
+                        delete savedData[activityId];
+                    }
+                    localStorage.setItem('caecSubmissionData', JSON.stringify(savedData));
+                }
             }
         }
 
@@ -820,7 +857,12 @@
             const date = dateInput.value;
             if (date) {
                 console.log('Submission date updated for ' + activityId + ':', date);
-                // You can add localStorage or other persistence here
+                // Save to localStorage
+                const savedData = JSON.parse(localStorage.getItem('caecSubmissionData') || '{}');
+                savedData[activityId] = savedData[activityId] || {};
+                savedData[activityId].submitted = true;
+                savedData[activityId].submissionDate = date;
+                localStorage.setItem('caecSubmissionData', JSON.stringify(savedData));
             }
         }
 
@@ -829,8 +871,49 @@
             const date = dateInput.value;
             if (date) {
                 console.log('Acceptance date updated for ' + activityId + ':', date);
-                // You can add localStorage or other persistence here
+                // Save to localStorage
+                const savedData = JSON.parse(localStorage.getItem('caecSubmissionData') || '{}');
+                savedData[activityId] = savedData[activityId] || {};
+                savedData[activityId].accepted = true;
+                savedData[activityId].acceptanceDate = date;
+                localStorage.setItem('caecSubmissionData', JSON.stringify(savedData));
             }
+        }
+
+        function loadSavedSubmissionData() {
+            const savedData = JSON.parse(localStorage.getItem('caecSubmissionData') || '{}');
+            
+            Object.keys(savedData).forEach(activityId => {
+                const data = savedData[activityId];
+                
+                // Restore submission checkbox
+                if (data.submitted) {
+                    const submittedCheckbox = document.getElementById(activityId + '-submitted-checkbox');
+                    const submissionDateDiv = document.getElementById(activityId + '-submission-date');
+                    const submissionDateInput = document.getElementById(activityId + '-submission-date-input');
+                    
+                    if (submittedCheckbox && submissionDateDiv && submissionDateInput) {
+                        submittedCheckbox.checked = true;
+                        submissionDateDiv.style.display = 'block';
+                        submissionDateDiv.classList.add('show');
+                        submissionDateInput.value = data.submissionDate || '';
+                    }
+                }
+                
+                // Restore acceptance checkbox
+                if (data.accepted) {
+                    const acceptedCheckbox = document.getElementById(activityId + '-accepted-checkbox');
+                    const acceptanceDateDiv = document.getElementById(activityId + '-acceptance-date');
+                    const acceptanceDateInput = document.getElementById(activityId + '-acceptance-date-input');
+                    
+                    if (acceptedCheckbox && acceptanceDateDiv && acceptanceDateInput) {
+                        acceptedCheckbox.checked = true;
+                        acceptanceDateDiv.style.display = 'block';
+                        acceptanceDateDiv.classList.add('show');
+                        acceptanceDateInput.value = data.acceptanceDate || '';
+                    }
+                }
+            });
         }
     </script>
 </body>
