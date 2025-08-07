@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPWA CAEC Submission - Damian Sian</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header styles */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Progress summary */
+        .progress-summary {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #28a745, #20c997);
+            height: 100%;
+            width: 38.2%;
+            transition: width 0.3s ease;
+        }
+
+        /* Year sections */
+        .year-section {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .year-header {
+            background: #495057;
+            color: white;
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .year-header:hover {
+            background: #343a40;
+        }
+
+        .year-header:focus {
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+        }
+
+        .year-content {
+            padding: 30px;
+            display: none;
+        }
+
+        .year-content.active {
+            display: block;
+        }
+
+        /* Activity cards */
+        .activity-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .activity-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .activity-details {
+            padding: 20px;
+        }
+
+        .evidence-section {
+            margin-top: 20px;
+        }
+
+        .evidence-toggle {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .evidence-toggle:hover {
+            background: #0056b3;
+        }
+
+        .evidence-toggle:focus {
+            outline: 3px solid #007bff;
+            outline-offset: 2px;
+        }
+
+        .evidence-content {
+            display: none;
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .evidence-content.active {
+            display: block;
+        }
+
+        .evidence-item {
+            margin-bottom: 15px;
+        }
+
+        .evidence-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+
+        /* Status badges */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-complete {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .year-header {
+                padding: 15px 20px;
+            }
+            
+            .year-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Damian Sian</h1>
+            <p>CPWA (Certified Professional in Web Accessibility)</p>
+            <p>CAEC Submission for Renewal Period: 2023-2026</p>
+        </header>
+
+        <!-- Progress Summary -->
+        <section class="progress-summary">
+            <h2>Progress Summary</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" role="progressbar" aria-valuenow="38.2" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p><strong>Total Progress:</strong> 21/55 CAECs (38.2% complete)</p>
+            <p><strong>Remaining:</strong> 34 CAECs needed</p>
+            <p><strong>Certification Period:</strong> 2023-2026</p>
+            
+            <table>
+                <caption>Category Breakdown</caption>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Earned</th>
+                        <th>Target</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Formal Education</td>
+                        <td>15</td>
+                        <td>20</td>
+                        <td>75% complete</td>
+                    </tr>
+                    <tr>
+                        <td>Teaching/Presenting</td>
+                        <td>6</td>
+                        <td>5</td>
+                        <td><span class="status-badge status-complete">Complete</span></td>
+                    </tr>
+                    <tr>
+                        <td>Professional Development</td>
+                        <td>0</td>
+                        <td>15</td>
+                        <td>0% complete</td>
+                    </tr>
+                    <tr>
+                        <td>Conference/Workshop</td>
+                        <td>0</td>
+                        <td>10</td>
+                        <td>0% complete</td>
+                    </tr>
+                    <tr>
+                        <td>Self-Study</td>
+                        <td>0</td>
+                        <td>5</td>
+                        <td>0% complete</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 2023 Activities -->
+        <section class="year-section">
+            <button class="year-header" onclick="toggleYear('2023')" aria-expanded="false" aria-controls="content-2023">
+                <h2>2023 Activities</h2>
+                <span class="year-summary">15 CAECs earned</span>
+                <span class="sr-only">Click to expand or collapse 2023 activities</span>
+            </button>
+            <div id="content-2023" class="year-content">
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <h3>Gallaudet University ASL I Course</h3>
+                        <p><strong>Category:</strong> Formal Education | <strong>Credits:</strong> 15 CAECs</p>
+                        <p><strong>Date:</strong> January 17 - May 12, 2023</p>
+                        <p><strong>Provider:</strong> Gallaudet University (Center for Continuing Education)</p>
+                    </div>
+                    <div class="activity-details">
+                        <p><strong>Course Details:</strong></p>
+                        <ul>
+                            <li>Course: ASL I (PST 301 OL1)</li>
+                            <li>Duration: 15 weeks (extended format)</li>
+                            <li>Weekly Commitment: 7-8 hours (3 hours viewing + 4-5 hours practicing)</li>
+                            <li>Total Contact Hours: 105-120 hours</li>
+                            <li>Credits: 3 university credits</li>
+                        </ul>
+                        
+                        <p><strong>Accessibility Focus:</strong></p>
+                        <ul>
+                            <li>American Sign Language fundamentals</li>
+                            <li>Deaf culture and community understanding</li>
+                            <li>Communication accessibility for Deaf users</li>
+                            <li>Professional development in accessibility</li>
+                        </ul>
+
+                        <div class="evidence-section">
+                            <button class="evidence-toggle" onclick="toggleEvidence('evidence-asl')" aria-expanded="false" aria-controls="evidence-content-asl">
+                                View Supporting Evidence
+                            </button>
+                            <div id="evidence-content-asl" class="evidence-content">
+                                <div class="evidence-item">
+                                    <h4>Course Registration Confirmation</h4>
+                                    <p>Gallaudet University CCOE portal showing course registration and approval status.</p>
+                                    <!-- Add screenshot here when available -->
+                                </div>
+                                <div class="evidence-item">
+                                    <h4>Course Details</h4>
+                                    <p>Course: ASL I (PST 301 OL1)<br>
+                                    Credits: 3 university credits<br>
+                                    Schedule: January 17 - May 12, 2023<br>
+                                    Format: Extended 15-week course<br>
+                                    Institution: Gallaudet University (premier Deaf institution)</p>
+                                </div>
+                                <div class="evidence-item">
+                                    <h4>Pending Documentation</h4>
+                                    <ul>
+                                        <li>Official transcript</li>
+                                        <li>Course syllabus</li>
+                                        <li>Final grade/assessment</li>
+                                        <li>Additional course materials</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2025 Activities -->
+        <section class="year-section">
+            <button class="year-header" onclick="toggleYear('2025')" aria-expanded="false" aria-controls="content-2025">
+                <h2>2025 Activities</h2>
+                <span class="year-summary">6 CAECs earned</span>
+                <span class="sr-only">Click to expand or collapse 2025 activities</span>
+            </button>
+            <div id="content-2025" class="year-content">
+                <!-- A11Y NYC Meetup -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <h3>A11Y NYC Meetup - AI Bookmarklets Presentation</h3>
+                        <p><strong>Category:</strong> Teaching/Presenting | <strong>Credits:</strong> 2 CAECs</p>
+                        <p><strong>Date:</strong> June 3, 2025</p>
+                        <p><strong>Provider:</strong> A11Y NYC Meetup</p>
+                    </div>
+                    <div class="activity-details">
+                        <p><strong>Presentation Details:</strong></p>
+                        <ul>
+                            <li>Title: "Using AI to build Bookmarklets for Accessibility Testing"</li>
+                            <li>Duration: 10 minutes (lightning talk)</li>
+                            <li>Additional Participation: Panel discussion and full session attendance</li>
+                            <li>Preparation Time: 7 hours</li>
+                            <li>Format: Hybrid (online and in-person)</li>
+                        </ul>
+                        
+                        <p><strong>Accessibility Focus:</strong></p>
+                        <ul>
+                            <li>AI applications in accessibility testing</li>
+                            <li>Custom bookmarklet development</li>
+                            <li>Automated accessibility testing tools</li>
+                            <li>Professional accessibility testing methodologies</li>
+                        </ul>
+
+                        <div class="evidence-section">
+                            <button class="evidence-toggle" onclick="toggleEvidence('evidence-a11y-nyc')" aria-expanded="false" aria-controls="evidence-content-a11y-nyc">
+                                View Supporting Evidence
+                            </button>
+                            <div id="evidence-content-a11y-nyc" class="evidence-content">
+                                <div class="evidence-item">
+                                    <h4>YouTube Video</h4>
+                                    <p>URL: <a href="https://youtube.com/watch?v=0gUsilXZILQ" target="_blank">https://youtube.com/watch?v=0gUsilXZILQ</a></p>
+                                    <p>Event: A11Y NYC Meetup - June 3, 2025</p>
+                                    <p>Duration: 9 minutes 42 seconds</p>
+                                    <p>Speaker: Damian Sian - Senior Design Accessibility PgM, Adobe Product Equity Team</p>
+                                </div>
+                                <div class="evidence-item">
+                                    <h4>Event Details</h4>
+                                    <p>Event: A11Y NYC Goes to Civic Hall: Celebrating 35 Years of People and Technology</p>
+                                    <p>Location: Online and in-person at Civic Hall, New York, NY</p>
+                                    <p>Focus: Celebrating 35 years of the ADA and exploring the role of technology in accessibility</p>
+                                    <p>Accessibility Features: Human captions, ASL interpreter, Aira Visual Interpreter access</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- axe-con 2025 -->
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <h3>axe-con 2025 - Design Annotation Presentation</h3>
+                        <p><strong>Category:</strong> Teaching/Presenting | <strong>Credits:</strong> 4 CAECs</p>
+                        <p><strong>Date:</strong> February 26, 2025</p>
+                        <p><strong>Provider:</strong> Deque Systems (axe-con 2025)</p>
+                    </div>
+                    <div class="activity-details">
+                        <p><strong>Presentation Details:</strong></p>
+                        <ul>
+                            <li>Title: "Building a culture of accessibility through design annotation"</li>
+                            <li>Duration: 1 hour presentation</li>
+                            <li>Preparation Time: 30 hours</li>
+                            <li>Conference: axe-con 2025 (Track: Design)</li>
+                            <li>Co-Presenter: Taniya Bhosale (Interaction Designer, Adobe)</li>
+                            <li>Role: Accessibility Product Manager, Adobe</li>
+                        </ul>
+                        
+                        <p><strong>Accessibility Focus:</strong></p>
+                        <ul>
+                            <li>Adobe's organizational accessibility training program</li>
+                            <li>Design annotation processes and specifications</li>
+                            <li>Community of practice development</li>
+                            <li>Complex UI pattern annotation examples</li>
+                        </ul>
+
+                        <div class="evidence-section">
+                            <button class="evidence-toggle" onclick="toggleEvidence('evidence-axe-con')" aria-expanded="false" aria-controls="evidence-content-axe-con">
+                                View Supporting Evidence
+                            </button>
+                            <div id="evidence-content-axe-con" class="evidence-content">
+                                <div class="evidence-item">
+                                    <h4>Conference Session</h4>
+                                    <p>URL: <a href="https://www.deque.com/axe-con/sessions/building-a-culture-of-accessibility-through-design-annotation/" target="_blank">https://www.deque.com/axe-con/sessions/building-a-culture-of-accessibility-through-design-annotation/</a></p>
+                                    <p>Conference: axe-con 2025</p>
+                                    <p>Track: Design</p>
+                                    <p>Date: February 26, 2025</p>
+                                </div>
+                                <div class="evidence-item">
+                                    <h4>YouTube Video</h4>
+                                    <p>URL: <a href="https://www.youtube.com/watch?v=UDKUxGa80ec" target="_blank">https://www.youtube.com/watch?v=UDKUxGa80ec</a></p>
+                                    <p>Duration: 50 minutes 43 seconds</p>
+                                    <p>Views: 426 (as of upload date)</p>
+                                    <p>Upload Date: February 26, 2024</p>
+                                </div>
+                                <div class="evidence-item">
+                                    <h4>Presentation Details</h4>
+                                    <p>Title: "Building a culture of accessibility through design annotation"</p>
+                                    <p>Speaker: Damian Sian - Accessibility Product Manager, Adobe</p>
+                                    <p>Co-presenter: Taniya Bhosale (Interaction Designer, Adobe)</p>
+                                    <p>Conference: axe-con 2025 (Track: Design)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2024 Activities -->
+        <section class="year-section">
+            <button class="year-header" onclick="toggleYear('2024')" aria-expanded="false" aria-controls="content-2024">
+                <h2>2024 Activities</h2>
+                <span class="year-summary">0 CAECs earned</span>
+                <span class="sr-only">Click to expand or collapse 2024 activities</span>
+            </button>
+            <div id="content-2024" class="year-content">
+                <p>No activities logged for 2024 yet.</p>
+            </div>
+        </section>
+
+        <!-- 2026 Activities -->
+        <section class="year-section">
+            <button class="year-header" onclick="toggleYear('2026')" aria-expanded="false" aria-controls="content-2026">
+                <h2>2026 Activities</h2>
+                <span class="year-summary">0 CAECs earned</span>
+                <span class="sr-only">Click to expand or collapse 2026 activities</span>
+            </button>
+            <div id="content-2026" class="year-content">
+                <p>No activities logged for 2026 yet.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleYear(yearId) {
+            const content = document.getElementById('content-' + yearId);
+            const button = content.previousElementSibling;
+            const isExpanded = content.classList.contains('active');
+            
+            // Update ARIA attributes
+            button.setAttribute('aria-expanded', !isExpanded);
+            
+            // Toggle visibility
+            if (isExpanded) {
+                content.classList.remove('active');
+            } else {
+                content.classList.add('active');
+            }
+        }
+
+        function toggleEvidence(evidenceId) {
+            const content = document.getElementById('evidence-content-' + evidenceId);
+            const button = content.previousElementSibling;
+            const isExpanded = content.classList.contains('active');
+            
+            // Update ARIA attributes
+            button.setAttribute('aria-expanded', !isExpanded);
+            
+            // Toggle visibility
+            if (isExpanded) {
+                content.classList.remove('active');
+            } else {
+                content.classList.add('active');
+            }
+        }
+
+        // Initialize first year as expanded
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleYear('2023');
+        });
+    </script>
+</body>
+</html>
