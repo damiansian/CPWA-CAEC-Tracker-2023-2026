@@ -428,35 +428,7 @@
             </table>
         </section>
 
-        <!-- IAAP Submission Tracking -->
-        <section class="progress-summary">
-            <h2>IAAP Submission Status</h2>
-            <div class="submission-tracking">
-                <div class="submission-item">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="submitted-checkbox" onchange="toggleSubmissionDate()">
-                        <span class="checkmark"></span>
-                        Submitted to IAAP
-                    </label>
-                    <div id="submission-date" class="date-input" style="display: none;">
-                        <label for="submission-date-input">Submission Date:</label>
-                        <input type="date" id="submission-date-input" onchange="updateSubmissionDate()">
-                    </div>
-                </div>
-                
-                <div class="submission-item">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="accepted-checkbox" onchange="toggleAcceptanceDate()">
-                        <span class="checkmark"></span>
-                        Accepted by IAAP
-                    </label>
-                    <div id="acceptance-date" class="date-input" style="display: none;">
-                        <label for="acceptance-date-input">Acceptance Date:</label>
-                        <input type="date" id="acceptance-date-input" onchange="updateAcceptanceDate()">
-                    </div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- 2023 Activities -->
         <section class="year-section">
@@ -517,6 +489,33 @@
                                         <li>Final grade/assessment</li>
                                         <li>Additional course materials</li>
                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="submission-tracking">
+                            <h4>IAAP Submission Status</h4>
+                            <div class="submission-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="asl-submitted-checkbox" onchange="toggleSubmissionDate('asl')">
+                                    <span class="checkmark"></span>
+                                    Submitted to IAAP
+                                </label>
+                                <div id="asl-submission-date" class="date-input" style="display: none;">
+                                    <label for="asl-submission-date-input">Submission Date:</label>
+                                    <input type="date" id="asl-submission-date-input" onchange="updateSubmissionDate('asl')">
+                                </div>
+                            </div>
+                            
+                            <div class="submission-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="asl-accepted-checkbox" onchange="toggleAcceptanceDate('asl')">
+                                    <span class="checkmark"></span>
+                                    Accepted by IAAP
+                                </label>
+                                <div id="asl-acceptance-date" class="date-input" style="display: none;">
+                                    <label for="asl-acceptance-date-input">Acceptance Date:</label>
+                                    <input type="date" id="asl-acceptance-date-input" onchange="updateAcceptanceDate('asl')">
                                 </div>
                             </div>
                         </div>
@@ -592,6 +591,33 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="submission-tracking">
+                            <h4>IAAP Submission Status</h4>
+                            <div class="submission-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="a11y-nyc-submitted-checkbox" onchange="toggleSubmissionDate('a11y-nyc')">
+                                    <span class="checkmark"></span>
+                                    Submitted to IAAP
+                                </label>
+                                <div id="a11y-nyc-submission-date" class="date-input" style="display: none;">
+                                    <label for="a11y-nyc-submission-date-input">Submission Date:</label>
+                                    <input type="date" id="a11y-nyc-submission-date-input" onchange="updateSubmissionDate('a11y-nyc')">
+                                </div>
+                            </div>
+                            
+                            <div class="submission-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="a11y-nyc-accepted-checkbox" onchange="toggleAcceptanceDate('a11y-nyc')">
+                                    <span class="checkmark"></span>
+                                    Accepted by IAAP
+                                </label>
+                                <div id="a11y-nyc-acceptance-date" class="date-input" style="display: none;">
+                                    <label for="a11y-nyc-acceptance-date-input">Acceptance Date:</label>
+                                    <input type="date" id="a11y-nyc-acceptance-date-input" onchange="updateAcceptanceDate('a11y-nyc')">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -647,6 +673,33 @@
                                     <p>Speaker: Damian Sian - Accessibility Product Manager, Adobe</p>
                                     <p>Co-presenter: Taniya Bhosale (Interaction Designer, Adobe)</p>
                                     <p>Conference: axe-con 2025 (Track: Design)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="submission-tracking">
+                            <h4>IAAP Submission Status</h4>
+                            <div class="submission-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="axe-con-submitted-checkbox" onchange="toggleSubmissionDate('axe-con')">
+                                    <span class="checkmark"></span>
+                                    Submitted to IAAP
+                                </label>
+                                <div id="axe-con-submission-date" class="date-input" style="display: none;">
+                                    <label for="axe-con-submission-date-input">Submission Date:</label>
+                                    <input type="date" id="axe-con-submission-date-input" onchange="updateSubmissionDate('axe-con')">
+                                </div>
+                            </div>
+                            
+                            <div class="submission-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="axe-con-accepted-checkbox" onchange="toggleAcceptanceDate('axe-con')">
+                                    <span class="checkmark"></span>
+                                    Accepted by IAAP
+                                </label>
+                                <div id="axe-con-acceptance-date" class="date-input" style="display: none;">
+                                    <label for="axe-con-acceptance-date-input">Acceptance Date:</label>
+                                    <input type="date" id="axe-con-acceptance-date-input" onchange="updateAcceptanceDate('axe-con')">
                                 </div>
                             </div>
                         </div>
@@ -707,10 +760,10 @@
         });
 
         // Submission tracking functions
-        function toggleSubmissionDate() {
-            const checkbox = document.getElementById('submitted-checkbox');
-            const dateDiv = document.getElementById('submission-date');
-            const dateInput = document.getElementById('submission-date-input');
+        function toggleSubmissionDate(activityId) {
+            const checkbox = document.getElementById(activityId + '-submitted-checkbox');
+            const dateDiv = document.getElementById(activityId + '-submission-date');
+            const dateInput = document.getElementById(activityId + '-submission-date-input');
             
             if (checkbox.checked) {
                 dateDiv.style.display = 'block';
@@ -724,10 +777,10 @@
             }
         }
 
-        function toggleAcceptanceDate() {
-            const checkbox = document.getElementById('accepted-checkbox');
-            const dateDiv = document.getElementById('acceptance-date');
-            const dateInput = document.getElementById('acceptance-date-input');
+        function toggleAcceptanceDate(activityId) {
+            const checkbox = document.getElementById(activityId + '-accepted-checkbox');
+            const dateDiv = document.getElementById(activityId + '-acceptance-date');
+            const dateInput = document.getElementById(activityId + '-acceptance-date-input');
             
             if (checkbox.checked) {
                 dateDiv.style.display = 'block';
@@ -741,20 +794,20 @@
             }
         }
 
-        function updateSubmissionDate() {
-            const dateInput = document.getElementById('submission-date-input');
+        function updateSubmissionDate(activityId) {
+            const dateInput = document.getElementById(activityId + '-submission-date-input');
             const date = dateInput.value;
             if (date) {
-                console.log('Submission date updated:', date);
+                console.log('Submission date updated for ' + activityId + ':', date);
                 // You can add localStorage or other persistence here
             }
         }
 
-        function updateAcceptanceDate() {
-            const dateInput = document.getElementById('acceptance-date-input');
+        function updateAcceptanceDate(activityId) {
+            const dateInput = document.getElementById(activityId + '-acceptance-date-input');
             const date = dateInput.value;
             if (date) {
-                console.log('Acceptance date updated:', date);
+                console.log('Acceptance date updated for ' + activityId + ':', date);
                 // You can add localStorage or other persistence here
             }
         }
